@@ -126,6 +126,9 @@ def parse_info(response):
                 sub_dict[k] = v
         return sub_dict
     for line in response.splitlines():
+        line = line.strip()
+        if not line or line.startswith('#'): continue
+
         key, value = line.split(':')
         try:
             info[key] = int(value)
